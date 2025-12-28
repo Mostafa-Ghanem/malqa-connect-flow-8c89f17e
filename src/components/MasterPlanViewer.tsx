@@ -38,7 +38,7 @@ const MasterPlanViewer = () => {
             <div className="text-center mt-6">
               <Button variant="secondary" size="lg">
                 <Download className="h-5 w-5" />
-                تحميل صورة المخطط
+                الحصول على المخطط كامل
               </Button>
             </div>
           </div>
