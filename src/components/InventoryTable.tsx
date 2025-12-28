@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 interface InventoryTableProps {
@@ -6,9 +5,6 @@ interface InventoryTableProps {
 }
 
 const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
-  const [usageFilter, setUsageFilter] = useState<string>("all");
-  const [areaFilter, setAreaFilter] = useState<string>("all");
-
   const previewData = [
     { id: "A-12", usage: "سكني", area: "650 م²" },
     { id: "B-05", usage: "تجاري", area: "1200 م²" },
@@ -16,25 +12,6 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
     { id: "A-23", usage: "سكني", area: "520 م²" },
     { id: "D-15", usage: "تجاري", area: "1350 م²" },
   ];
-
-  const usageOptions = [
-    { value: "all", label: "الكل" },
-    { value: "سكني", label: "سكني" },
-    { value: "تجاري", label: "تجاري" },
-    { value: "سكني-تجاري", label: "سكني-تجاري" },
-  ];
-
-  const areaOptions = [
-    { value: "all", label: "الكل" },
-    { value: "500-800", label: "500–800 م²" },
-    { value: "800-1100", label: "800–1100 م²" },
-    { value: "1100-1400", label: "1100–1400 م²" },
-  ];
-
-  const filteredData = previewData.filter((item) => {
-    if (usageFilter !== "all" && item.usage !== usageFilter) return false;
-    return true;
-  });
 
   return (
     <section className="py-16 bg-background">
@@ -46,47 +23,6 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
           <p className="text-center text-muted-foreground mb-8">
             عرض مختصر — للحصول على الجدول الكامل والأسعار المحدثة
           </p>
-
-          {/* Filters */}
-          <div className="flex flex-wrap gap-4 mb-6 justify-center">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">الاستخدام:</span>
-              <div className="flex gap-2">
-                {usageOptions.map((option) => (
-                  <button
-                    key={option.value}
-                    onClick={() => setUsageFilter(option.value)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                      usageFilter === option.value
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground hover:bg-muted/80"
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">المساحة:</span>
-              <div className="flex gap-2">
-                {areaOptions.map((option) => (
-                  <button
-                    key={option.value}
-                    onClick={() => setAreaFilter(option.value)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                      areaFilter === option.value
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground hover:bg-muted/80"
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
 
           {/* Table */}
           <div className="rounded-2xl border border-border overflow-hidden shadow-card bg-card">
@@ -101,7 +37,7 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredData.map((row, index) => (
+                  {previewData.map((row, index) => (
                     <tr
                       key={row.id}
                       className="border-b border-border/50 hover:bg-muted/30 transition-colors animate-fade-in-up"
