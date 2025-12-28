@@ -9,6 +9,7 @@ import InfrastructureGrid from "@/components/InfrastructureGrid";
 import NearbyLandmarks from "@/components/NearbyLandmarks";
 import MasterPlanViewer from "@/components/MasterPlanViewer";
 import InventoryTable from "@/components/InventoryTable";
+import ProcessSteps from "@/components/ProcessSteps";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import LeadModal from "@/components/LeadModal";
@@ -35,6 +36,7 @@ const Index = () => {
         <NearbyLandmarks />
         <MasterPlanViewer />
         <InventoryTable onOpenModal={openModal} />
+        <ProcessSteps />
         <FAQSection />
       </main>
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
 interface InventoryTableProps {
@@ -5,12 +6,29 @@ interface InventoryTableProps {
 }
 
 const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
+  const [usageFilter, setUsageFilter] = useState<string>("all");
+  const [areaFilter, setAreaFilter] = useState<string>("all");
+
   const previewData = [
-    { id: "A-12", usage: "سكني", area: "650 م²" },
-    { id: "B-05", usage: "تجاري", area: "1200 م²" },
-    { id: "C-08", usage: "سكني-تجاري", area: "880 م²" },
-    { id: "A-23", usage: "سكني", area: "520 م²" },
-    { id: "D-15", usage: "تجاري", area: "1350 م²" },
+    { id: "149", usage: "سكني/تجاري", area: "500 م²" },
+    { id: "148", usage: "سكني", area: "650 م²" },
+    { id: "147", usage: "تجاري", area: "1200 م²" },
+    { id: "146", usage: "سكني", area: "880 م²" },
+    { id: "145", usage: "سكني/تجاري", area: "1350 م²" },
+  ];
+
+  const usageOptions = [
+    { value: "all", label: "الكل" },
+    { value: "سكني", label: "سكني" },
+    { value: "تجاري", label: "تجاري" },
+    { value: "سكني/تجاري", label: "سكني/تجاري" },
+  ];
+
+  const areaOptions = [
+    { value: "all", label: "الكل" },
+    { value: "500-800", label: "500 - 800 م²" },
+    { value: "800-1100", label: "800 - 1100 م²" },
+    { value: "1100-1400", label: "1100 - 1400 م²" },
   ];
 
   return (
@@ -18,11 +36,51 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
       <div className="container">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground text-center mb-4">
-            جدول القطع المتاحة
+            اختر قطعتك الآن!
           </h2>
-          <p className="text-center text-muted-foreground mb-10 text-sm sm:text-base">
-            عرض مختصر — للحصول على الجدول الكامل والأسعار المحدثة
+          <p className="text-center text-muted-foreground mb-8 text-sm sm:text-base">
+            جدول القطع المتاحة (عرض مختصر)
           </p>
+
+          {/* Filters */}
+          <div className="flex flex-wrap gap-4 mb-6 justify-center">
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-muted-foreground">الاستخدام:</span>
+              <div className="flex gap-1 flex-wrap">
+                {usageOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => setUsageFilter(option.value)}
+                    className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
+                      usageFilter === option.value
+                        ? "bg-button text-button-foreground"
+                        : "bg-muted text-muted-foreground hover:bg-muted/80"
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-muted-foreground">المساحة:</span>
+              <div className="flex gap-1 flex-wrap">
+                {areaOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => setAreaFilter(option.value)}
+                    className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
+                      areaFilter === option.value
+                        ? "bg-button text-button-foreground"
+                        : "bg-muted text-muted-foreground hover:bg-muted/80"
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
 
           {/* Table */}
           <div className="rounded-2xl border border-border overflow-hidden shadow-card bg-card">
@@ -57,8 +115,8 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
                       </td>
                       <td className="px-6 py-4 text-muted-foreground">{row.area}</td>
                       <td className="px-6 py-4 text-center">
-                        <Button variant="outline" size="sm" onClick={onOpenModal}>
-                          اطلب سعرها
+                        <Button variant="hero" size="sm" onClick={onOpenModal}>
+                          اعرف السعر
                         </Button>
                       </td>
                     </tr>
@@ -69,16 +127,13 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-10">
+          <div className="text-center mt-10 p-6 bg-muted/30 rounded-2xl border border-border">
+            <p className="text-lg font-semibold text-foreground mb-4">
+              للحصول على الجدول الكامل والأسعار
+            </p>
             <Button variant="hero" size="lg" onClick={onOpenModal} className="text-base">
-              اطلب أحدث جدول متاح
+              ارسل لي السعر والتفاصيل
             </Button>
-            <p className="text-sm text-muted-foreground mt-4">
-              نرسل لك التفاصيل الكاملة + ملف PDF + الأسعار المحدثة
-            </p>
-            <p className="text-xs text-bronze-dark font-medium mt-2">
-              ✓ القطع تنفذ بسرعة — احجز مكانك
-            </p>
           </div>
         </div>
       </div>

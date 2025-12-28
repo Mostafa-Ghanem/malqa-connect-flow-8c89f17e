@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Phone } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import headerLogo from "@/assets/header-logo.png";
 
 interface StickyHeaderProps {
   onOpenModal: () => void;
 }
+
+const WHATSAPP_LINK = "https://wa.me/966800248666";
 
 const StickyHeader = ({ onOpenModal }: StickyHeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -45,13 +47,21 @@ const StickyHeader = ({ onOpenModal }: StickyHeaderProps) => {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-3">
-          <span className="hidden lg:block text-xs text-muted-foreground">
-            رد خلال وقت العمل – إرسال التفاصيل فورًا
-          </span>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Button
+            variant="outline"
+            size="sm"
+            className="hidden sm:inline-flex"
+            asChild
+          >
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="h-4 w-4" />
+              واتساب
+            </a>
+          </Button>
           
           <Button
-            variant="heroOutline"
+            variant="outline"
             size="sm"
             className="hidden sm:inline-flex"
             asChild
@@ -63,7 +73,7 @@ const StickyHeader = ({ onOpenModal }: StickyHeaderProps) => {
           </Button>
 
           <Button variant="hero" size="sm" onClick={onOpenModal}>
-            اطلب الأسعار
+            معرفة الأسعار
           </Button>
         </div>
       </div>

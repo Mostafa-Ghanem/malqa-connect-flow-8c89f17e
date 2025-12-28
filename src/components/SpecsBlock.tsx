@@ -3,8 +3,8 @@ const SpecsBlock = () => {
     { label: "نوع المشروع", value: "سكني وتجاري" },
     { label: "عدد القطع", value: "149" },
     { label: "المساحة الإجمالية", value: "77,000 م²" },
-    { label: "متوسط مساحات القطع", value: "500–1400 م²" },
-    { label: "عروض الشوارع", value: "40 / 25 / 15 م" },
+    { label: "متوسط مساحات القطع", value: "500 – 1400 م² تقريبًا" },
+    { label: "عرض الشوارع", value: "40 / 25 / 15 م" },
   ];
 
   return (
@@ -12,7 +12,7 @@ const SpecsBlock = () => {
       <div className="container">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl lg:text-3xl font-bold text-foreground text-center mb-10">
-            المواصفات الأساسية
+            تفاصيل المخطط
           </h2>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">

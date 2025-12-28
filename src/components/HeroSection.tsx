@@ -1,4 +1,4 @@
-import { MapPin, Maximize, Grid3X3, Ruler } from "lucide-react";
+import { MapPin, Maximize, Grid3X3, Ruler, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import aerialSunset from "@/assets/aerial-sunset.jpeg";
 
@@ -6,12 +6,14 @@ interface HeroSectionProps {
   onOpenModal: () => void;
 }
 
+const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/agBF6RcWVs51nzhZ6";
+
 const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
   const stats = [
     { icon: Maximize, value: "77,000 م²", label: "مساحة إجمالية" },
-    { icon: Grid3X3, value: "500–1400 م²", label: "مساحات قطع متنوعة" },
-    { icon: Ruler, value: "40 / 25 / 15 م", label: "عروض الشوارع المحيطة" },
-    { icon: MapPin, value: "سكني + تجاري", label: "مرونة حسب هدفك" },
+    { icon: Grid3X3, value: "500 – 1400 م²", label: "مساحات القطع تقريبًا" },
+    { icon: Ruler, value: "40 / 25 / 15 م", label: "عروض الشوارع" },
+    { icon: Layers, value: "سكني + تجاري", label: "استخدامات متعددة" },
   ];
 
   return (
@@ -23,28 +25,27 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Content Column */}
           <div className="order-2 lg:order-1 animate-fade-in-up">
-            {/* Badges */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-sage/10 text-sage-dark text-sm font-medium border border-sage/20">
-                500–1400 م²
-              </span>
-              <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-bronze/10 text-bronze-dark text-sm font-medium border border-bronze/20">
-                77,000 م²
-              </span>
+            {/* Main Heading */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
+              مخطط ملقا الطائف
+            </h1>
+            <p className="text-xl sm:text-2xl lg:text-3xl font-semibold text-bronze-dark mb-6">
+              149 قطعة سكنية وتجارية بشمال الطائف
+            </p>
+
+            {/* Tagline */}
+            <div className="bg-primary/10 border border-primary/20 rounded-xl p-4 mb-6">
+              <p className="text-lg sm:text-xl font-bold text-foreground">
+                فرصتك لامتلاك أرض المستقبل!
+              </p>
             </div>
 
-            {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-5">
-              مخطط ملقا الطائف
-              <span className="block text-bronze-dark mt-2">149 قطعة سكنية وتجارية</span>
-              <span className="block text-xl sm:text-2xl lg:text-3xl font-semibold text-foreground/80 mt-3">
-                بحي الواسط
-              </span>
-            </h1>
-
-            {/* Subheadline */}
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
-              خيارك لبناء بيت العمر أو إطلاق مشروع عقاري واعد داخل حي الواسط — هدوء عمراني، سهولة وصول، وقرب من الطرق الرئيسية والخدمات اليومية.
+            {/* Description */}
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-4">
+              خيارك الأمثل لبناء <span className="font-semibold text-foreground">"بيت العمر"</span> في حي يجمع بين الهدوء والخصوصية، أو لإطلاق مشروعك التجاري على شوارع حيوية.
+            </p>
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8">
+              ضمن موقع استراتيجي يضمن لك سهولة الوصول، وجودة الحياة، بشمال الطائف.
             </p>
 
             {/* Stats Grid */}
@@ -67,17 +68,20 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Button variant="hero" size="lg" onClick={onOpenModal} className="w-full sm:w-auto text-base">
-                استلم الأسعار + جدول القطع المتاحة
+                عرض الأسعار
+              </Button>
+              <Button variant="outline" size="lg" onClick={onOpenModal} className="w-full sm:w-auto">
+                احجز زيارة للموقع
+              </Button>
+              <Button variant="secondary" size="lg" asChild className="w-full sm:w-auto">
+                <a href={GOOGLE_MAPS_LINK} target="_blank" rel="noopener noreferrer">
+                  <MapPin className="h-4 w-4" />
+                  الموقع على قوقل ماب
+                </a>
               </Button>
             </div>
-            <p className="text-sm text-muted-foreground mt-4">
-              توصلك التفاصيل + ملف PDF + خريطة + صورة المخطط
-            </p>
-            <p className="text-xs text-bronze-dark font-medium mt-2">
-              ✓ رد خلال 24 ساعة
-            </p>
           </div>
 
           {/* Image Column */}
@@ -93,8 +97,8 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
                 <div className="absolute inset-0 bg-gradient-overlay" />
                 <div className="absolute bottom-4 right-4 left-4">
                   <div className="bg-card/90 backdrop-blur-sm rounded-xl p-4 shadow-card">
-                    <p className="font-semibold text-foreground">حي الواسط - الطائف</p>
-                    <p className="text-sm text-muted-foreground">موقع استراتيجي قريب من الخدمات</p>
+                    <p className="font-semibold text-foreground">شمال الطائف</p>
+                    <p className="text-sm text-muted-foreground">موقع استراتيجي متميز</p>
                   </div>
                 </div>
               </div>
