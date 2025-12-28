@@ -21,18 +21,18 @@ const NearbyLandmarks = () => {
             المعالم القريبة
           </h2>
           
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-8 items-start">
             {/* Map Image */}
             <a 
               href={GOOGLE_MAPS_LINK} 
               target="_blank" 
               rel="noopener noreferrer"
-              className="relative rounded-2xl overflow-hidden bg-muted aspect-[4/3] shadow-card block hover:shadow-lg transition-shadow"
+              className="relative rounded-2xl overflow-hidden bg-muted shadow-card block hover:shadow-lg transition-shadow"
             >
               <img 
                 src={landmarksMapImage} 
                 alt="موقع المشروع على الخريطة" 
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-contain"
               />
             </a>
 

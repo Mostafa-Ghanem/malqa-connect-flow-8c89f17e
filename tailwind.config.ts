@@ -62,6 +62,10 @@ export default {
         },
         cream: "hsl(var(--cream))",
         charcoal: "hsl(var(--charcoal))",
+        button: {
+          DEFAULT: "hsl(var(--button))",
+          foreground: "hsl(var(--button-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

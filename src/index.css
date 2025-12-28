@@ -47,7 +47,9 @@
     --bronze-light: 35 30% 75%;
     --bronze-dark: 35 40% 45%;
     --cream: 40 30% 96%;
-    --charcoal: 220 25% 15%;
+    --charcoal: 210 25% 14%;
+    --button: 210 25% 14%;
+    --button-foreground: 0 0% 100%;
 
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(160 11% 73% / 0.08), hsl(35 35% 62% / 0.08));

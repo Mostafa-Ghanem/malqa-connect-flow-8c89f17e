@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import headerLogo from "@/assets/header-logo.png";
 
 interface StickyHeaderProps {
   onOpenModal: () => void;
@@ -41,7 +41,7 @@ const StickyHeader = ({ onOpenModal }: StickyHeaderProps) => {
       <div className="container flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <img src={logo} alt="مخطط ملقا الطائف" className="h-10 md:h-12 w-auto" />
+          <img src={headerLogo} alt="مخطط ملقا الطائف" className="h-14 md:h-20 w-auto" />
         </div>
 
         {/* Actions */}
