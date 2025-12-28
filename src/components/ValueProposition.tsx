@@ -9,18 +9,18 @@ const ValueProposition = ({ onOpenModal }: ValuePropositionProps) => {
   const values = [
     {
       icon: Home,
-      title: "سكن عائلي هادئ",
-      description: "بيئة هادئة ومناسبة للعائلات مع خصوصية تامة",
+      title: "سكينة وخصوصية",
+      description: "بيئة سكنية مثالية للعائلات، بعيدًا عن صخب المدينة وبالقرب من كافة الخدمات",
     },
     {
       icon: TrendingUp,
-      title: "فرص استثمار وتطوير",
-      description: "قطع متنوعة تناسب المشاريع التجارية والسكنية",
+      title: "فرص استثمارية واعدة",
+      description: "تخطيط عمراني ذكي يعزز من قيمة العقار مستقبلًا، سواء للبناء أو إعادة البيع",
     },
     {
       icon: MapPinned,
-      title: "سهولة وصول وخدمات قريبة",
-      description: "قرب من الطرق الرئيسية والمرافق الحيوية",
+      title: "موقع استراتيجي",
+      description: "ربط حيوي بالطرق الرئيسية يجعلك على بعد دقائق من أهم معالم الطائف",
     },
   ];
 
@@ -30,10 +30,10 @@ const ValueProposition = ({ onOpenModal }: ValuePropositionProps) => {
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-14">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5 leading-tight">
-            لماذا مخطط ملقا الطائف يخدم السكن والاستثمار؟
+            لماذا "ملقا الطائف" هو وجهتك القادمة؟
           </h2>
           <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-            موقع يخدم أهدافك السكنية والاستثمارية ضمن بيئة متكاملة التخطيط والخدمات والمرافق… وقيمة تنمو مع الوقت.
+            لأننا ندرك أن شراء الأرض هو قرار العمر، يحقق لك "ملقا الطائف" المعادلة الصعبة: سكن راقٍ في منطقة هادئة، وقيمة استثمارية تتضاعف، بفضل النمو العمراني المتسارع في شمال الطائف.
           </p>
         </div>
 
@@ -57,11 +57,8 @@ const ValueProposition = ({ onOpenModal }: ValuePropositionProps) => {
         {/* CTA */}
         <div className="text-center">
           <Button variant="hero" size="lg" onClick={onOpenModal} className="text-base">
-            اطلب التفاصيل الآن
+            اكتشف تفاصيل أكثر!
           </Button>
-          <p className="text-xs text-bronze-dark font-medium mt-3">
-            ✓ استشارة مجانية بدون التزام
-          </p>
         </div>
       </div>
     </section>
