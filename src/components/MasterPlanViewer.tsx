@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { ZoomIn, Download, X } from "lucide-react";
+import { ZoomIn, FileText, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import aerialTop from "@/assets/aerial-top.jpeg";
+import LeadModal from "./LeadModal";
 
 const MasterPlanViewer = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -36,9 +38,9 @@ const MasterPlanViewer = () => {
             </div>
             
             <div className="text-center mt-6">
-              <Button variant="secondary" size="lg">
-                <Download className="h-5 w-5" />
-                تحميل صورة المخطط
+              <Button variant="secondary" size="lg" onClick={() => setIsModalOpen(true)}>
+                <FileText className="h-5 w-5" />
+                الحصول على المخطط كامل
               </Button>
             </div>
           </div>
@@ -65,6 +67,8 @@ const MasterPlanViewer = () => {
           />
         </div>
       )}
+
+      <LeadModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };
