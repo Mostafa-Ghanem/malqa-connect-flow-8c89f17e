@@ -34,33 +34,33 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
             </div>
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-5">
               مخطط ملقا الطائف
-              <span className="block text-sage mt-2">149 قطعة سكنية وتجارية</span>
-              <span className="block text-xl sm:text-2xl lg:text-3xl font-medium text-muted-foreground mt-3">
+              <span className="block text-bronze-dark mt-2">149 قطعة سكنية وتجارية</span>
+              <span className="block text-xl sm:text-2xl lg:text-3xl font-semibold text-foreground/80 mt-3">
                 بحي الواسط
               </span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
               خيارك لبناء بيت العمر أو إطلاق مشروع عقاري واعد داخل حي الواسط — هدوء عمراني، سهولة وصول، وقرب من الطرق الرئيسية والخدمات اليومية.
             </p>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-3 p-4 rounded-xl bg-card shadow-soft border border-border/50 animate-fade-in-up"
+                  className="flex items-start gap-3 p-3 sm:p-4 rounded-xl bg-card shadow-soft border border-border/50 animate-fade-in-up"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  <div className="p-2 rounded-lg bg-sage/10">
-                    <stat.icon className="h-5 w-5 text-sage-dark" />
+                  <div className="p-2 rounded-lg bg-bronze/15">
+                    <stat.icon className="h-5 w-5 text-bronze-dark" />
                   </div>
                   <div>
-                    <p className="font-bold text-foreground">{stat.value}</p>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
+                    <p className="font-bold text-foreground text-sm sm:text-base">{stat.value}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{stat.label}</p>
                   </div>
                 </div>
               ))}
@@ -68,12 +68,15 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="hero" size="lg" onClick={onOpenModal} className="w-full sm:w-auto">
+              <Button variant="hero" size="lg" onClick={onOpenModal} className="w-full sm:w-auto text-base">
                 استلم الأسعار + جدول القطع المتاحة
               </Button>
             </div>
-            <p className="text-sm text-muted-foreground mt-3">
+            <p className="text-sm text-muted-foreground mt-4">
               توصلك التفاصيل + ملف PDF + خريطة + صورة المخطط
+            </p>
+            <p className="text-xs text-bronze-dark font-medium mt-2">
+              ✓ رد خلال 24 ساعة
             </p>
           </div>
 
