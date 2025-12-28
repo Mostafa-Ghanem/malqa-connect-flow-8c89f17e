@@ -14,13 +14,13 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
   ];
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-16 lg:py-20 bg-background">
       <div className="container">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl lg:text-3xl font-bold text-foreground text-center mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground text-center mb-4">
             جدول القطع المتاحة
           </h2>
-          <p className="text-center text-muted-foreground mb-8">
+          <p className="text-center text-muted-foreground mb-10 text-sm sm:text-base">
             عرض مختصر — للحصول على الجدول الكامل والأسعار المحدثة
           </p>
 
@@ -43,13 +43,13 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
                       className="border-b border-border/50 hover:bg-muted/30 transition-colors animate-fade-in-up"
                       style={{ animationDelay: `${index * 50}ms` }}
                     >
-                      <td className="px-6 py-4 font-medium text-foreground">{row.id}</td>
-                      <td className="px-6 py-4">
-                        <span className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${
+                      <td className="px-4 sm:px-6 py-4 font-medium text-foreground">{row.id}</td>
+                      <td className="px-4 sm:px-6 py-4">
+                        <span className={`inline-flex px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${
                           row.usage === "سكني" 
-                            ? "bg-sage/10 text-sage-dark" 
+                            ? "bg-sage/15 text-sage-dark" 
                             : row.usage === "تجاري"
-                            ? "bg-bronze/10 text-bronze-dark"
+                            ? "bg-bronze/15 text-bronze-dark"
                             : "bg-muted text-muted-foreground"
                         }`}>
                           {row.usage}
@@ -69,12 +69,15 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-8">
-            <Button variant="hero" size="lg" onClick={onOpenModal}>
+          <div className="text-center mt-10">
+            <Button variant="hero" size="lg" onClick={onOpenModal} className="text-base">
               اطلب أحدث جدول متاح
             </Button>
-            <p className="text-sm text-muted-foreground mt-3">
+            <p className="text-sm text-muted-foreground mt-4">
               نرسل لك التفاصيل الكاملة + ملف PDF + الأسعار المحدثة
+            </p>
+            <p className="text-xs text-bronze-dark font-medium mt-2">
+              ✓ القطع تنفذ بسرعة — احجز مكانك
             </p>
           </div>
         </div>

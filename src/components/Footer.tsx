@@ -8,15 +8,18 @@ interface FooterProps {
 
 const Footer = ({ onOpenModal }: FooterProps) => {
   return (
-    <footer className="bg-charcoal text-background py-16">
+    <footer className="bg-charcoal text-background py-14 lg:py-20">
       <div className="container">
         <div className="max-w-4xl mx-auto">
           {/* Final CTA */}
-          <div className="text-center mb-12">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4">
+          <div className="text-center mb-14">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-5 leading-tight">
               امتلك اليوم داخل مخطط يمنحك الهدوء والقيمة وسهولة الوصول
             </h2>
-            <Button variant="hero" size="lg" onClick={onOpenModal} className="mt-4">
+            <p className="text-background/70 mb-6 text-sm sm:text-base">
+              احصل على جدول القطع المتاحة والأسعار المحدثة الآن
+            </p>
+            <Button variant="hero" size="lg" onClick={onOpenModal}>
               اطلب الأسعار
             </Button>
           </div>
