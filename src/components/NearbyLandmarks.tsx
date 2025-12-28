@@ -1,5 +1,8 @@
-import { Hospital, Plane, ShoppingBag, GraduationCap, Stethoscope, MapPin } from "lucide-react";
+import { Hospital, Plane, ShoppingBag, GraduationCap, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import nearbyMapImage from "@/assets/nearby-landmarks-map.png";
+
+const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/agBF6RcWVs51nzhZ6";
 
 const NearbyLandmarks = () => {
   const landmarks = [
@@ -19,15 +22,19 @@ const NearbyLandmarks = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Map Placeholder */}
-            <div className="relative rounded-2xl overflow-hidden bg-muted aspect-[4/3] shadow-card">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-12 w-12 text-sage mx-auto mb-3" />
-                  <p className="text-muted-foreground">خريطة الموقع</p>
-                </div>
-              </div>
-            </div>
+            {/* Map Image */}
+            <a 
+              href={GOOGLE_MAPS_LINK} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="relative rounded-2xl overflow-hidden bg-muted aspect-[4/3] shadow-card block hover:shadow-lg transition-shadow"
+            >
+              <img 
+                src={nearbyMapImage} 
+                alt="موقع المشروع على الخريطة" 
+                className="w-full h-full object-cover"
+              />
+            </a>
 
             {/* Landmarks List */}
             <div className="space-y-4">
@@ -44,8 +51,14 @@ const NearbyLandmarks = () => {
                 </div>
               ))}
               
-              <Button variant="outline" className="w-full mt-4">
-                عرض الموقع على الخريطة
+              <Button 
+                variant="outline" 
+                className="w-full mt-4"
+                asChild
+              >
+                <a href={GOOGLE_MAPS_LINK} target="_blank" rel="noopener noreferrer">
+                  عرض الموقع على الخريطة
+                </a>
               </Button>
             </div>
           </div>
