@@ -1,6 +1,6 @@
 import { Phone, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import footerLogo from "@/assets/footer-logo.png";
 
 interface FooterProps {
   onOpenModal: () => void;
@@ -58,7 +58,7 @@ const Footer = ({ onOpenModal }: FooterProps) => {
 
           {/* Logo & Copyright */}
           <div className="flex flex-col items-center gap-4">
-            <img src={logo} alt="مخطط ملقا الطائف" className="h-12 w-auto opacity-80" />
+            <img src={footerLogo} alt="مخطط ملقا الطائف" className="h-24 md:h-32 w-auto" />
             <p className="text-sm text-background/50">
               © {new Date().getFullYear()} مخطط ملقا الطائف. جميع الحقوق محفوظة.
             </p>

@@ -1,6 +1,6 @@
 import { Hospital, Plane, ShoppingBag, GraduationCap, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import nearbyMapImage from "@/assets/nearby-landmarks-map.png";
+import landmarksMapImage from "@/assets/landmarks-map.jpg";
 
 const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/agBF6RcWVs51nzhZ6";
 
@@ -30,7 +30,7 @@ const NearbyLandmarks = () => {
               className="relative rounded-2xl overflow-hidden bg-muted aspect-[4/3] shadow-card block hover:shadow-lg transition-shadow"
             >
               <img 
-                src={nearbyMapImage} 
+                src={landmarksMapImage} 
                 alt="موقع المشروع على الخريطة" 
                 className="w-full h-full object-cover"
               />
