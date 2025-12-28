@@ -19,7 +19,11 @@ const Footer = ({ onOpenModal }: FooterProps) => {
             <p className="text-background/70 mb-6 text-sm sm:text-base">
               احصل على جدول القطع المتاحة والأسعار المحدثة الآن
             </p>
-            <Button variant="hero" size="lg" onClick={onOpenModal}>
+            <Button 
+              size="lg" 
+              onClick={onOpenModal}
+              className="bg-primary text-charcoal hover:bg-primary/90 font-bold text-base"
+            >
               اطلب الأسعار
             </Button>
           </div>
