@@ -15,7 +15,7 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
   ];
 
   return (
-    <section className="relative min-h-screen pt-28 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
+    <section className="relative pt-28 pb-12 lg:pt-32 lg:pb-16 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-hero" />
       
