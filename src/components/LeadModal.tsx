@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { X, Phone, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -10,37 +10,51 @@ interface LeadModalProps {
 const LeadModal = ({ isOpen, onClose }: LeadModalProps) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const scriptLoadedRef = useRef(false);
+
+  const handleMessage = useCallback((event: MessageEvent) => {
+    if (event.data?.event === "Tally.FormSubmitted") {
+      setIsSubmitted(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = "hidden";
-      // Load Tally script
-      const script = document.createElement("script");
-      script.src = "https://tally.so/widgets/embed.js";
-      script.onload = () => {
-        if ((window as any).Tally) {
-          (window as any).Tally.loadEmbeds();
-        }
-      };
-      document.body.appendChild(script);
+      // Batch style change with RAF to avoid forced reflow
+      requestAnimationFrame(() => {
+        document.body.style.overflow = "hidden";
+      });
 
-      // Listen for form submission
-      const handleMessage = (event: MessageEvent) => {
-        if (event.data?.event === "Tally.FormSubmitted") {
-          setIsSubmitted(true);
-        }
-      };
+      // Load Tally script only once
+      if (!scriptLoadedRef.current) {
+        const script = document.createElement("script");
+        script.src = "https://tally.so/widgets/embed.js";
+        script.onload = () => {
+          scriptLoadedRef.current = true;
+          if ((window as any).Tally) {
+            (window as any).Tally.loadEmbeds();
+          }
+        };
+        document.body.appendChild(script);
+      } else if ((window as any).Tally) {
+        (window as any).Tally.loadEmbeds();
+      }
+
       window.addEventListener("message", handleMessage);
 
       return () => {
-        document.body.style.overflow = "";
+        requestAnimationFrame(() => {
+          document.body.style.overflow = "";
+        });
         window.removeEventListener("message", handleMessage);
       };
     } else {
-      document.body.style.overflow = "";
+      requestAnimationFrame(() => {
+        document.body.style.overflow = "";
+      });
       setIsSubmitted(false);
     }
-  }, [isOpen]);
+  }, [isOpen, handleMessage]);
 
   if (!isOpen) return null;
 
