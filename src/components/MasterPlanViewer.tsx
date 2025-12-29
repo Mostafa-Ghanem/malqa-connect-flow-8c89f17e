@@ -30,10 +30,10 @@ const MasterPlanViewer = () => {
 
   return (
     <>
-      <section className="py-16 bg-card">
+      <section className="py-12 lg:py-16 bg-card">
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl lg:text-3xl font-bold text-foreground text-center mb-8">
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground text-center mb-6 lg:mb-8">
               صورة المخطط الكاملة
             </h2>
             
@@ -53,15 +53,15 @@ const MasterPlanViewer = () => {
                       />
                       <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center">
                         <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 rounded-full bg-card/90 backdrop-blur-sm shadow-card">
-                          <ZoomIn className="h-8 w-8 text-foreground" />
+                          <ZoomIn className="h-6 w-6 sm:h-8 sm:w-8 text-foreground" />
                         </div>
                       </div>
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="right-auto left-4 bg-card/80 backdrop-blur-sm border-border hover:bg-card" />
-              <CarouselNext className="left-auto right-4 bg-card/80 backdrop-blur-sm border-border hover:bg-card" />
+              <CarouselPrevious className="right-auto left-2 sm:left-4 bg-card/80 backdrop-blur-sm border-border hover:bg-card h-8 w-8 sm:h-10 sm:w-10" />
+              <CarouselNext className="left-auto right-2 sm:right-4 bg-card/80 backdrop-blur-sm border-border hover:bg-card h-8 w-8 sm:h-10 sm:w-10" />
             </Carousel>
 
             {/* Carousel indicators */}
