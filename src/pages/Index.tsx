@@ -35,7 +35,7 @@ const Index = () => {
         <InfrastructureGrid />
         <NearbyLandmarks />
         <MasterPlanViewer />
-        <InventoryTable onOpenModal={openModal} />
+        {/* InventoryTable removed as requested */}
         <ProcessSteps />
         <FAQSection />
       </main>

@@ -61,8 +61,8 @@ const HeroSection = ({
               {stats.map((stat, index) => <div key={index} className="flex items-start gap-3 p-3 sm:p-4 rounded-xl bg-card shadow-soft border border-border/50 animate-fade-in-up" style={{
               animationDelay: `${index * 100}ms`
             }}>
-                  <div className="p-2 rounded-lg bg-bronze/15">
-                    <stat.icon className="h-5 w-5 text-bronze-dark" />
+                  <div className="p-2 rounded-lg bg-icon/20">
+                    <stat.icon className="h-5 w-5 text-icon-dark" />
                   </div>
                   <div>
                     <p className="font-bold text-foreground text-sm sm:text-base">{stat.value}</p>
@@ -94,11 +94,11 @@ const HeroSection = ({
               <div className="absolute -inset-4 bg-gradient-to-br from-sage/20 to-bronze/20 rounded-3xl blur-2xl" />
               <div className="relative rounded-2xl overflow-hidden shadow-elevated">
                 <img alt="مخطط ملقا الطائف - منظر جوي" className="w-full h-auto object-cover aspect-[4/3]" src="/lovable-uploads/88066aae-cd39-4e63-a997-c1c22e590a51.webp" />
-                <div className="absolute inset-0 bg-gradient-overlay" />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent" />
                 <div className="absolute bottom-4 right-4 left-4">
-                  <div className="bg-card/90 backdrop-blur-sm rounded-xl p-4 shadow-card">
-                    <p className="font-semibold text-foreground">شمال الطائف</p>
-                    <p className="text-sm text-muted-foreground">موقع استراتيجي متميز</p>
+                  <div className="bg-charcoal/70 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                    <p className="font-bold text-white text-lg">شمال الطائف</p>
+                    <p className="text-sm text-white/90">موقع استراتيجي متميز</p>
                   </div>
                 </div>
               </div>

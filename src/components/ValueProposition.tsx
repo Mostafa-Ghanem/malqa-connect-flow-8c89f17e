@@ -45,8 +45,8 @@ const ValueProposition = ({ onOpenModal }: ValuePropositionProps) => {
               className="group p-6 lg:p-8 rounded-2xl bg-card border border-border hover:border-bronze/30 shadow-soft hover:shadow-card transition-all duration-300 animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="p-3 lg:p-4 rounded-xl bg-gradient-to-br from-bronze/15 to-bronze/5 w-fit mb-5 group-hover:scale-110 transition-transform duration-300">
-                <value.icon className="h-7 w-7 lg:h-8 lg:w-8 text-bronze-dark" />
+              <div className="p-3 lg:p-4 rounded-xl bg-icon/20 w-fit mb-5 group-hover:scale-110 transition-transform duration-300">
+                <value.icon className="h-7 w-7 lg:h-8 lg:w-8 text-icon-dark" />
               </div>
               <h3 className="text-lg lg:text-xl font-bold text-foreground mb-3">{value.title}</h3>
               <p className="text-muted-foreground leading-relaxed text-sm lg:text-base">{value.description}</p>
