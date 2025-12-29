@@ -1,23 +1,26 @@
-import { Phone, MapPin, Clock } from "lucide-react";
+import { Phone, MapPin, Clock, Mail, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import footerLogo from "@/assets/footer-logo.png";
-
 interface FooterProps {
   onOpenModal: () => void;
 }
-
-const Footer = ({ onOpenModal }: FooterProps) => {
-  return (
-    <footer className="bg-charcoal text-background py-16">
+const WHATSAPP_LINK = "https://wa.me/966800248666";
+const Footer = ({
+  onOpenModal
+}: FooterProps) => {
+  return <footer className="bg-charcoal text-background py-14 lg:py-20">
       <div className="container">
         <div className="max-w-4xl mx-auto">
           {/* Final CTA */}
-          <div className="text-center mb-12">
-            <h2 className="text-2xl lg:text-3xl font-bold mb-4">
-              امتلك اليوم داخل مخطط يمنحك الهدوء والقيمة وسهولة الوصول
+          <div className="text-center mb-14">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 leading-tight">
+              احجز قطعتك اليوم، قبل اكتمال الحجوزات!
             </h2>
-            <Button variant="hero" size="lg" onClick={onOpenModal} className="mt-4">
-              اطلب الأسعار
+            <p className="text-background/70 mb-6 text-lg">
+              مخطط ملقا الطائف — استثمار اليوم، وأمان الغد
+            </p>
+            <Button size="lg" onClick={onOpenModal} className="bg-primary text-charcoal hover:bg-primary/90 font-bold text-base">
+              اطلب الأسعار الآن
             </Button>
           </div>
 
@@ -25,31 +28,43 @@ const Footer = ({ onOpenModal }: FooterProps) => {
           <div className="border-t border-background/10 my-10" />
 
           {/* Contact Info */}
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="flex flex-col items-center">
-              <div className="p-3 rounded-xl bg-background/10 mb-4">
+          <div className="text-center mb-8">
+            <p className="text-lg font-semibold mb-6">للتواصل والاستفسار:</p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-center mb-10">
+            <a href="tel:8002486666" className="flex flex-col items-center p-4 rounded-xl bg-background/5 hover:bg-background/10 transition-colors">
+              <div className="p-3 rounded-xl bg-background/10 mb-3">
                 <Phone className="h-6 w-6" />
               </div>
               <p className="text-sm text-background/60 mb-1">هاتف</p>
-              <a href="tel:8002486666" className="font-semibold text-lg hover:text-primary transition-colors" dir="ltr">
-                800 248 6666
-              </a>
-            </div>
+              <p className="font-semibold" dir="ltr">800 248 6666</p>
+            </a>
 
-            <div className="flex flex-col items-center">
-              <div className="p-3 rounded-xl bg-background/10 mb-4">
-                <MapPin className="h-6 w-6" />
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex flex-col items-center p-4 rounded-xl bg-background/5 hover:bg-background/10 transition-colors">
+              <div className="p-3 rounded-xl bg-background/10 mb-3">
+                <MessageCircle className="h-6 w-6" />
               </div>
-              <p className="text-sm text-background/60 mb-1">العنوان</p>
-              <p className="font-semibold">حي الواسط - الطائف</p>
-            </div>
+              <p className="text-sm text-background/60 mb-1">واتساب</p>
+              <p className="font-semibold">تواصل معنا</p>
+            </a>
 
-            <div className="flex flex-col items-center">
-              <div className="p-3 rounded-xl bg-background/10 mb-4">
+            
+
+            <div className="flex flex-col items-center p-4 rounded-xl bg-background/5">
+              <div className="p-3 rounded-xl bg-background/10 mb-3">
                 <Clock className="h-6 w-6" />
               </div>
               <p className="text-sm text-background/60 mb-1">ساعات العمل</p>
-              <p className="font-semibold">الأحد - الخميس: 9 ص - 6 م</p>
+              <p className="font-semibold">السبت - الخميس: 9 ص - 9 م</p>
+            </div>
+          </div>
+
+          {/* Address */}
+          <div className="text-center mb-10">
+            <div className="inline-flex items-center gap-2 text-background/70">
+              <MapPin className="h-5 w-5" />
+              <span>شمال الطائف - المملكة العربية السعودية</span>
             </div>
           </div>
 
@@ -65,8 +80,6 @@ const Footer = ({ onOpenModal }: FooterProps) => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
