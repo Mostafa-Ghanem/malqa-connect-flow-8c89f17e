@@ -32,7 +32,7 @@ const Footer = ({
             <p className="text-lg font-semibold mb-6">للتواصل والاستفسار:</p>
           </div>
           
-          <div className="<div class=\"grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center mb-10 justify-center mx-auto\">\n  <!-- \u0645\u062D\u062A\u0648\u0649 \u0627\u0644\u062F\u064A\u0641 -->\n</div>">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center mb-10">
             <a href="tel:8002486666" className="flex flex-col items-center p-4 rounded-xl bg-background/5 hover:bg-background/10 transition-colors">
               <div className="p-3 rounded-xl bg-background/10 mb-3">
                 <Phone className="h-6 w-6" />
