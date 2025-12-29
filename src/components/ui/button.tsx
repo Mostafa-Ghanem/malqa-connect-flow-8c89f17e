@@ -9,15 +9,15 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-button text-button-foreground hover:bg-button/90 shadow-soft hover:shadow-card",
+        default: "bg-primary text-primary-foreground hover:bg-primary/90 shadow-soft hover:shadow-card",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border-2 border-button bg-transparent text-button hover:bg-button hover:text-button-foreground",
-        secondary: "bg-button text-button-foreground hover:bg-button/80 shadow-soft",
+        outline: "border-2 border-primary bg-transparent text-primary hover:bg-primary hover:text-primary-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 shadow-soft",
         ghost: "hover:bg-muted hover:text-foreground",
-        link: "text-button underline-offset-4 hover:underline",
-        hero: "bg-button text-button-foreground hover:opacity-90 shadow-card hover:shadow-elevated hover:-translate-y-0.5",
-        heroOutline: "border-2 border-border bg-card/80 backdrop-blur-sm text-foreground hover:bg-card hover:border-button hover:text-button shadow-soft",
-        cta: "bg-button text-button-foreground hover:opacity-90 shadow-card hover:shadow-elevated",
+        link: "text-primary underline-offset-4 hover:underline",
+        hero: "bg-primary text-primary-foreground hover:opacity-90 shadow-card hover:shadow-elevated hover:-translate-y-0.5",
+        heroOutline: "border-2 border-border bg-card/80 backdrop-blur-sm text-foreground hover:bg-card hover:border-primary hover:text-primary shadow-soft",
+        cta: "bg-primary text-primary-foreground hover:opacity-90 shadow-card hover:shadow-elevated",
       },
       size: {
         default: "h-11 px-6 py-2",

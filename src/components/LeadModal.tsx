@@ -79,14 +79,11 @@ const LeadModal = ({ isOpen, onClose }: LeadModalProps) => {
           <>
             {/* Header */}
             <div className="text-center mb-6">
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2">
+              <h3 className="text-2xl font-bold text-foreground mb-2">
                 اطلب الأسعار وجدول القطع
               </h3>
-              <p className="text-sm sm:text-base text-muted-foreground">
+              <p className="text-muted-foreground">
                 توصلك التفاصيل + ملف PDF + خريطة + صورة المخطط
-              </p>
-              <p className="text-xs text-bronze-dark font-medium mt-2">
-                ✓ رد خلال 24 ساعة — استشارة مجانية
               </p>
             </div>
 

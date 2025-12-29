@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ZoomIn, Download, X } from "lucide-react";
+import { ZoomIn, FileText, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import aerialTop from "@/assets/aerial-top.jpeg";
 import LeadModal from "./LeadModal";
@@ -13,9 +13,12 @@ const MasterPlanViewer = () => {
       <section className="py-16 bg-card">
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl lg:text-3xl font-bold text-foreground text-center mb-8">
-              صورة المخطط الكاملة
+            <h2 className="text-2xl lg:text-3xl font-bold text-foreground text-center mb-4">
+              المخطط العام
             </h2>
+            <p className="text-center text-muted-foreground mb-8">
+              الصورة للتوضيح — التفاصيل النهائية حسب جدول القطع المتاحة
+            </p>
             
             {/* Plan Image */}
             <div
@@ -35,9 +38,9 @@ const MasterPlanViewer = () => {
             </div>
             
             <div className="text-center mt-6">
-              <Button variant="hero" size="lg" onClick={() => setIsModalOpen(true)}>
-                <Download className="h-5 w-5" />
-                تحميل صورة المخطط
+              <Button variant="secondary" size="lg" onClick={() => setIsModalOpen(true)}>
+                <FileText className="h-5 w-5" />
+                الحصول على المخطط كامل
               </Button>
             </div>
           </div>
