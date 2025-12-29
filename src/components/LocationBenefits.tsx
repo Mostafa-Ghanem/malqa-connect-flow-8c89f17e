@@ -28,8 +28,8 @@ const LocationBenefits = () => {
                 className="flex items-center gap-4 p-5 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors duration-300 animate-fade-in-up"
                 style={{ animationDelay: `${index * 80}ms` }}
               >
-                <div className="flex-shrink-0 p-2 rounded-full bg-sage/20">
-                  <Check className="h-5 w-5 text-sage-dark" />
+                <div className="flex-shrink-0 p-2 rounded-full bg-icon/20">
+                  <Check className="h-5 w-5 text-icon-dark" />
                 </div>
                 <p className="text-foreground font-medium">{benefit}</p>
               </div>
@@ -45,7 +45,7 @@ const LocationBenefits = () => {
                   key={index}
                   className="flex items-center gap-2 p-3 rounded-lg bg-card border border-border"
                 >
-                  <Check className="h-4 w-4 text-bronze-dark flex-shrink-0" />
+                  <Check className="h-4 w-4 text-icon-dark flex-shrink-0" />
                   <span className="text-sm text-foreground">{type}</span>
                 </div>
               ))}

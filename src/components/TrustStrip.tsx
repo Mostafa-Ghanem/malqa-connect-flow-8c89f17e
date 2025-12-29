@@ -34,8 +34,8 @@ const TrustStrip = () => {
               className="flex flex-col items-center text-center p-4 lg:p-6 rounded-xl bg-muted/30 hover:bg-muted/50 transition-colors duration-300 animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="p-2.5 lg:p-3 rounded-xl bg-bronze/15 mb-3 lg:mb-4">
-                <item.icon className="h-5 w-5 lg:h-6 lg:w-6 text-bronze-dark" />
+              <div className="p-2.5 lg:p-3 rounded-xl bg-icon/20 mb-3 lg:mb-4">
+                <item.icon className="h-5 w-5 lg:h-6 lg:w-6 text-icon-dark" />
               </div>
               <h3 className="font-semibold text-foreground mb-1 text-sm lg:text-base">{item.title}</h3>
               <p className="text-xs lg:text-sm text-muted-foreground">{item.description}</p>

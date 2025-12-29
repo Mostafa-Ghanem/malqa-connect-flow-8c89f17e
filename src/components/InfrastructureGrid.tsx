@@ -11,8 +11,8 @@ const InfrastructureGrid = () => {
           
           <div className="bg-card border border-border rounded-2xl p-6 lg:p-8 shadow-soft">
             <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 p-3 rounded-xl bg-sage/10">
-                <Info className="h-6 w-6 text-sage-dark" />
+              <div className="flex-shrink-0 p-3 rounded-xl bg-icon/20">
+                <Info className="h-6 w-6 text-icon-dark" />
               </div>
               <div>
                 <p className="text-foreground leading-relaxed text-base lg:text-lg">
