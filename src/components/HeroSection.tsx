@@ -94,11 +94,11 @@ const HeroSection = ({
               <div className="absolute -inset-4 bg-gradient-to-br from-sage/20 to-bronze/20 rounded-3xl blur-2xl" />
               <div className="relative rounded-2xl overflow-hidden shadow-elevated">
                 <img alt="مخطط ملقا الطائف - منظر جوي" className="w-full h-auto object-cover aspect-[4/3]" src="/lovable-uploads/88066aae-cd39-4e63-a997-c1c22e590a51.webp" />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent" />
-                <div className="absolute bottom-4 right-4 left-4">
-                  <div className="bg-charcoal/70 backdrop-blur-md rounded-xl p-4 border border-white/10">
-                    <p className="font-bold text-white text-lg">شمال الطائف</p>
-                    <p className="text-sm text-white/90">موقع استراتيجي متميز</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent" />
+                <div className="absolute bottom-4 right-4">
+                  <div className="bg-charcoal/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
+                    <p className="font-bold text-white text-sm">شمال الطائف</p>
+                    <p className="text-xs text-white/80">موقع استراتيجي متميز</p>
                   </div>
                 </div>
               </div>
