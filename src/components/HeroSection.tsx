@@ -1,23 +1,31 @@
 import { MapPin, Maximize, Grid3X3, Ruler, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import aerialSunset from "@/assets/aerial-sunset.jpeg";
-
 interface HeroSectionProps {
   onOpenModal: () => void;
 }
-
 const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/agBF6RcWVs51nzhZ6";
-
-const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
-  const stats = [
-    { icon: Maximize, value: "77,000 م²", label: "مساحة إجمالية" },
-    { icon: Grid3X3, value: "500 – 1400 م²", label: "مساحات القطع تقريبًا" },
-    { icon: Ruler, value: "40 / 25 / 15 م", label: "عروض الشوارع" },
-    { icon: Layers, value: "سكني + تجاري", label: "استخدامات متعددة" },
-  ];
-
-  return (
-    <section className="relative pt-28 pb-12 lg:pt-32 lg:pb-16 overflow-hidden">
+const HeroSection = ({
+  onOpenModal
+}: HeroSectionProps) => {
+  const stats = [{
+    icon: Maximize,
+    value: "77,000 م²",
+    label: "مساحة إجمالية"
+  }, {
+    icon: Grid3X3,
+    value: "500 – 1400 م²",
+    label: "مساحات القطع تقريبًا"
+  }, {
+    icon: Ruler,
+    value: "40 / 25 / 15 م",
+    label: "عروض الشوارع"
+  }, {
+    icon: Layers,
+    value: "سكني + تجاري",
+    label: "استخدامات متعددة"
+  }];
+  return <section className="relative pt-28 pb-12 lg:pt-32 lg:pb-16 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-hero" />
       
@@ -50,12 +58,9 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
-              {stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-3 p-3 sm:p-4 rounded-xl bg-card shadow-soft border border-border/50 animate-fade-in-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
+              {stats.map((stat, index) => <div key={index} className="flex items-start gap-3 p-3 sm:p-4 rounded-xl bg-card shadow-soft border border-border/50 animate-fade-in-up" style={{
+              animationDelay: `${index * 100}ms`
+            }}>
                   <div className="p-2 rounded-lg bg-bronze/15">
                     <stat.icon className="h-5 w-5 text-bronze-dark" />
                   </div>
@@ -63,8 +68,7 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
                     <p className="font-bold text-foreground text-sm sm:text-base">{stat.value}</p>
                     <p className="text-xs sm:text-sm text-muted-foreground">{stat.label}</p>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
 
             {/* CTAs */}
@@ -89,11 +93,7 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-br from-sage/20 to-bronze/20 rounded-3xl blur-2xl" />
               <div className="relative rounded-2xl overflow-hidden shadow-elevated">
-                <img
-                  src={aerialSunset}
-                  alt="مخطط ملقا الطائف - منظر جوي"
-                  className="w-full h-auto object-cover aspect-[4/3]"
-                />
+                <img alt="مخطط ملقا الطائف - منظر جوي" className="w-full h-auto object-cover aspect-[4/3]" src="/lovable-uploads/88066aae-cd39-4e63-a997-c1c22e590a51.webp" />
                 <div className="absolute inset-0 bg-gradient-overlay" />
                 <div className="absolute bottom-4 right-4 left-4">
                   <div className="bg-card/90 backdrop-blur-sm rounded-xl p-4 shadow-card">
@@ -106,8 +106,6 @@ const HeroSection = ({ onOpenModal }: HeroSectionProps) => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;

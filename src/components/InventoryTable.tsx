@@ -1,38 +1,61 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-
 interface InventoryTableProps {
   onOpenModal: () => void;
 }
-
-const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
+const InventoryTable = ({
+  onOpenModal
+}: InventoryTableProps) => {
   const [usageFilter, setUsageFilter] = useState<string>("all");
   const [areaFilter, setAreaFilter] = useState<string>("all");
-
-  const previewData = [
-    { id: "149", usage: "سكني/تجاري", area: "500 م²" },
-    { id: "148", usage: "سكني", area: "650 م²" },
-    { id: "147", usage: "تجاري", area: "1200 م²" },
-    { id: "146", usage: "سكني", area: "880 م²" },
-    { id: "145", usage: "سكني/تجاري", area: "1350 م²" },
-  ];
-
-  const usageOptions = [
-    { value: "all", label: "الكل" },
-    { value: "سكني", label: "سكني" },
-    { value: "تجاري", label: "تجاري" },
-    { value: "سكني/تجاري", label: "سكني/تجاري" },
-  ];
-
-  const areaOptions = [
-    { value: "all", label: "الكل" },
-    { value: "500-800", label: "500 - 800 م²" },
-    { value: "800-1100", label: "800 - 1100 م²" },
-    { value: "1100-1400", label: "1100 - 1400 م²" },
-  ];
-
-  return (
-    <section className="py-16 lg:py-20 bg-background">
+  const previewData = [{
+    id: "149",
+    usage: "سكني/تجاري",
+    area: "500 م²"
+  }, {
+    id: "148",
+    usage: "سكني",
+    area: "650 م²"
+  }, {
+    id: "147",
+    usage: "تجاري",
+    area: "1200 م²"
+  }, {
+    id: "146",
+    usage: "سكني",
+    area: "880 م²"
+  }, {
+    id: "145",
+    usage: "سكني/تجاري",
+    area: "1350 م²"
+  }];
+  const usageOptions = [{
+    value: "all",
+    label: "الكل"
+  }, {
+    value: "سكني",
+    label: "سكني"
+  }, {
+    value: "تجاري",
+    label: "تجاري"
+  }, {
+    value: "سكني/تجاري",
+    label: "سكني/تجاري"
+  }];
+  const areaOptions = [{
+    value: "all",
+    label: "الكل"
+  }, {
+    value: "500-800",
+    label: "500 - 800 م²"
+  }, {
+    value: "800-1100",
+    label: "800 - 1100 م²"
+  }, {
+    value: "1100-1400",
+    label: "1100 - 1400 م²"
+  }];
+  return <section className="py-16 lg:py-20 bg-background">
       <div className="container">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground text-center mb-4">
@@ -43,44 +66,7 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
           </p>
 
           {/* Filters */}
-          <div className="flex flex-wrap gap-4 mb-6 justify-center">
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">الاستخدام:</span>
-              <div className="flex gap-1 flex-wrap">
-                {usageOptions.map((option) => (
-                  <button
-                    key={option.value}
-                    onClick={() => setUsageFilter(option.value)}
-                    className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
-                      usageFilter === option.value
-                        ? "bg-button text-button-foreground"
-                        : "bg-muted text-muted-foreground hover:bg-muted/80"
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">المساحة:</span>
-              <div className="flex gap-1 flex-wrap">
-                {areaOptions.map((option) => (
-                  <button
-                    key={option.value}
-                    onClick={() => setAreaFilter(option.value)}
-                    className={`px-3 py-1.5 rounded-full text-sm transition-colors ${
-                      areaFilter === option.value
-                        ? "bg-button text-button-foreground"
-                        : "bg-muted text-muted-foreground hover:bg-muted/80"
-                    }`}
-                  >
-                    {option.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          
 
           {/* Table */}
           <div className="rounded-2xl border border-border overflow-hidden shadow-card bg-card">
@@ -95,21 +81,12 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {previewData.map((row, index) => (
-                    <tr
-                      key={row.id}
-                      className="border-b border-border/50 hover:bg-muted/30 transition-colors animate-fade-in-up"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                    >
+                  {previewData.map((row, index) => <tr key={row.id} className="border-b border-border/50 hover:bg-muted/30 transition-colors animate-fade-in-up" style={{
+                  animationDelay: `${index * 50}ms`
+                }}>
                       <td className="px-4 sm:px-6 py-4 font-medium text-foreground">{row.id}</td>
                       <td className="px-4 sm:px-6 py-4">
-                        <span className={`inline-flex px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${
-                          row.usage === "سكني" 
-                            ? "bg-sage/15 text-sage-dark" 
-                            : row.usage === "تجاري"
-                            ? "bg-bronze/15 text-bronze-dark"
-                            : "bg-muted text-muted-foreground"
-                        }`}>
+                        <span className={`inline-flex px-3 py-1 rounded-full text-xs sm:text-sm font-medium ${row.usage === "سكني" ? "bg-sage/15 text-sage-dark" : row.usage === "تجاري" ? "bg-bronze/15 text-bronze-dark" : "bg-muted text-muted-foreground"}`}>
                           {row.usage}
                         </span>
                       </td>
@@ -119,8 +96,7 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
                           اعرف السعر
                         </Button>
                       </td>
-                    </tr>
-                  ))}
+                    </tr>)}
                 </tbody>
               </table>
             </div>
@@ -137,8 +113,6 @@ const InventoryTable = ({ onOpenModal }: InventoryTableProps) => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default InventoryTable;
