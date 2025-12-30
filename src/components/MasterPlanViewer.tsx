@@ -18,7 +18,7 @@ import LeadModal from "./LeadModal";
 
 const MasterPlanViewer = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [lightboxImage, setLightboxImage] = useState("");
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const images = [
@@ -30,9 +30,19 @@ const MasterPlanViewer = () => {
     { src: villasFrontView, alt: "الفلل - منظر أمامي عند الغروب" },
   ];
 
-  const openLightbox = (imageSrc: string) => {
-    setLightboxImage(imageSrc);
+  const openLightbox = (index: number) => {
+    setCurrentImageIndex(index);
     setIsLightboxOpen(true);
+  };
+
+  const goToPrevious = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const goToNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -51,7 +61,7 @@ const MasterPlanViewer = () => {
                   <CarouselItem key={index}>
                     <div
                       className="relative rounded-2xl overflow-hidden shadow-elevated cursor-pointer group"
-                      onClick={() => openLightbox(image.src)}
+                      onClick={() => openLightbox(index)}
                     >
                       <img
                         src={image.src}
@@ -90,24 +100,50 @@ const MasterPlanViewer = () => {
         </div>
       </section>
 
-      {/* Lightbox */}
+      {/* Lightbox with navigation */}
       {isLightboxOpen && (
         <div
           className="fixed inset-0 z-[100] bg-foreground/90 backdrop-blur-sm flex items-center justify-center p-4"
           onClick={() => setIsLightboxOpen(false)}
         >
+          {/* Close button */}
           <button
             className="absolute top-4 left-4 p-3 rounded-full bg-card/20 hover:bg-card/40 transition-colors"
             onClick={() => setIsLightboxOpen(false)}
           >
             <X className="h-6 w-6 text-background" />
           </button>
+
+          {/* Previous button */}
+          <button
+            className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-card/30 hover:bg-card/50 transition-colors"
+            onClick={goToPrevious}
+          >
+            <ChevronLeft className="h-8 w-8 text-background" />
+          </button>
+
+          {/* Image */}
           <img
-            src={lightboxImage}
-            alt="المخطط العام لمشروع ملقا الطائف"
+            src={images[currentImageIndex].src}
+            alt={images[currentImageIndex].alt}
             className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-elevated animate-scale-in"
             onClick={(e) => e.stopPropagation()}
           />
+
+          {/* Next button */}
+          <button
+            className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-card/30 hover:bg-card/50 transition-colors"
+            onClick={goToNext}
+          >
+            <ChevronRight className="h-8 w-8 text-background" />
+          </button>
+
+          {/* Image counter */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-card/30 backdrop-blur-sm px-4 py-2 rounded-full">
+            <span className="text-background text-sm">
+              {currentImageIndex + 1} / {images.length}
+            </span>
+          </div>
         </div>
       )}
 
