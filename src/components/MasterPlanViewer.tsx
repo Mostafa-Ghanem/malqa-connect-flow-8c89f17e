@@ -12,6 +12,8 @@ import aerialTopView from "@/assets/aerial-top-view.webp";
 import aerialSunsetView from "@/assets/aerial-sunset-view.webp";
 import aerialPanorama from "@/assets/aerial-panorama.webp";
 import masterPlanMap from "@/assets/master-plan-map.webp";
+import villasTopView from "@/assets/villas-top-view.webp";
+import villasFrontView from "@/assets/villas-front-view.webp";
 import LeadModal from "./LeadModal";
 
 const MasterPlanViewer = () => {
@@ -24,6 +26,8 @@ const MasterPlanViewer = () => {
     { src: aerialTopView, alt: "منظر علوي لمخطط ملقا الطائف" },
     { src: aerialSunsetView, alt: "منظر جوي عند الغروب" },
     { src: aerialPanorama, alt: "منظر بانورامي لمخطط ملقا الطائف" },
+    { src: villasTopView, alt: "الفلل - منظر علوي" },
+    { src: villasFrontView, alt: "الفلل - منظر أمامي عند الغروب" },
   ];
 
   const openLightbox = (imageSrc: string) => {
