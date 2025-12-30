@@ -8,8 +8,10 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import aerialTop from "@/assets/aerial-top.jpeg";
-import aerialSunset from "@/assets/aerial-sunset.jpeg";
+import aerialTopView from "@/assets/aerial-top-view.webp";
+import aerialSunsetView from "@/assets/aerial-sunset-view.webp";
+import aerialPanorama from "@/assets/aerial-panorama.webp";
+import masterPlanMap from "@/assets/master-plan-map.webp";
 import LeadModal from "./LeadModal";
 
 const MasterPlanViewer = () => {
@@ -18,9 +20,10 @@ const MasterPlanViewer = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const images = [
-    { src: aerialTop, alt: "المخطط العام لمشروع ملقا الطائف - منظر علوي" },
-    { src: aerialSunset, alt: "مخطط ملقا الطائف - منظر جوي" },
-    { src: "/lovable-uploads/88066aae-cd39-4e63-a997-c1c22e590a51.webp", alt: "مخطط ملقا الطائف - صورة إضافية" },
+    { src: masterPlanMap, alt: "المخطط العام لمشروع ملقا الطائف" },
+    { src: aerialTopView, alt: "منظر علوي لمخطط ملقا الطائف" },
+    { src: aerialSunsetView, alt: "منظر جوي عند الغروب" },
+    { src: aerialPanorama, alt: "منظر بانورامي لمخطط ملقا الطائف" },
   ];
 
   const openLightbox = (imageSrc: string) => {
