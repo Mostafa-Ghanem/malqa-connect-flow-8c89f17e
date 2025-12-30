@@ -93,7 +93,7 @@ const HeroSection = ({
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-br from-sage/20 to-bronze/20 rounded-3xl blur-2xl" />
               <div className="relative rounded-2xl overflow-hidden shadow-elevated">
-                <img alt="مخطط ملقا الطائف - منظر جوي" className="w-full h-auto object-cover aspect-[4/3]" src={heroImage} />
+                <img alt="مخطط ملقا الطائف - منظر جوي" className="w-full h-auto object-contain aspect-square rounded-2xl" src={heroImage} />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/30 via-transparent to-transparent" />
                 <div className="absolute bottom-4 right-4">
                   <div className="bg-charcoal/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/20">
