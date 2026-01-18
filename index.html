@@ -24,7 +24,8 @@
     
     
     <!-- PostHog Analytics -->
-    export default {
+<script>
+      export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
@@ -78,6 +79,7 @@ async function handlePostHogProxy(request) {
   });
 }
 
+    </script>
   </head>
   <body>
     <div id="root"></div>
