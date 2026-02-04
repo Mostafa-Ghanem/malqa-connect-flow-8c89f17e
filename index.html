@@ -47,52 +47,52 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- Global Data Layer Listener -->
+    <!-- Custom Analytics Script -->
     <script>
-      (function() {
-        // Initialize Data Layer
-        window.dataLayer = window.dataLayer || [];
+      // 1. Initialize Data Layer
+      window.dataLayer = window.dataLayer || [];
+      console.log("✅ Custom Analytics Script Loaded");
+
+      // 2. Global Click Listener (Whatsapp & Calls)
+      document.addEventListener('click', function(e) {
+        // Look for the clicked element or its parent (if icon is clicked)
+        var el = e.target.closest('a, button'); 
         
-        // Track Tally Form Submissions (Cross-Origin via postMessage)
-        window.addEventListener('message', function(event) {
-          // Check if the message is from Tally
-          if (event.data && event.data.event === 'Tally.FormSubmitted') {
-            window.dataLayer.push({
-              'event': 'form_submit',
-              'form_provider': 'tally',
-              'source': 'landing_page'
-            });
+        if (el) {
+          // Get URL and Text safely
+          var url = el.href || '';
+          var text = el.innerText || el.textContent || '';
+
+          // Log for debugging
+          console.log("🔹 Click detected:", text, "URL:", url);
+
+          // Check if it matches our targets
+          if (url.includes('wa.me') || url.includes('tel:')) {
+             console.log("🚀 Pushing generic_click to DataLayer");
+             window.dataLayer.push({
+                'event': 'generic_click',
+                'element_url': url,
+                'element_text': text
+             });
           }
-        });
-        
-        // Global Click Tracking for Links and Buttons
-        document.addEventListener('click', function(e) {
-          var target = e.target.closest('a, button');
-          if (!target) return;
-          
-          var elementText = target.innerText || target.textContent || '';
-          var elementUrl = target.href || '';
-          var elementType = target.tagName.toLowerCase();
-          
-          // Determine click type
-          var clickType = 'button_click';
-          if (elementUrl.indexOf('tel:') === 0) {
-            clickType = 'phone_click';
-          } else if (elementUrl.indexOf('wa.me') !== -1 || elementUrl.indexOf('whatsapp') !== -1) {
-            clickType = 'whatsapp_click';
-          } else if (elementType === 'a' && elementUrl) {
-            clickType = 'link_click';
-          }
-          
+        }
+      });
+
+      // 3. Tally Form Listener
+      window.addEventListener('message', function(e) {
+        // Check for Tally submission signals
+        // Tally sends different signals depending on setup, we check both common types
+        var isTally = (e.data === 'Tally.FormSubmitted') || 
+                      (e.data && e.data.type === 'tally-form-submitted');
+
+        if (isTally) {
+          console.log("🏆 Tally Form Submitted! Pushing to DataLayer...");
           window.dataLayer.push({
-            'event': clickType,
-            'element_text': elementText.trim().substring(0, 100),
-            'element_url': elementUrl,
-            'element_type': elementType,
-            'source': 'landing_page'
+            'event': 'form_submit',
+            'form_provider': 'tally'
           });
-        });
-      })();
+        }
+      });
     </script>
   </body>
 </html>
