@@ -51,24 +51,18 @@
     <script>
       // 1. Initialize Data Layer
       window.dataLayer = window.dataLayer || [];
-      console.log("✅ Custom Analytics Script Loaded");
+      console.log("✅ Analytics: Ready & Listening...");
 
-      // 2. Global Click Listener (Whatsapp & Calls)
+      // 2. Global Click Listener (WhatsApp & Calls)
       document.addEventListener('click', function(e) {
-        // Look for the clicked element or its parent (if icon is clicked)
         var el = e.target.closest('a, button'); 
-        
         if (el) {
-          // Get URL and Text safely
           var url = el.href || '';
           var text = el.innerText || el.textContent || '';
-
-          // Log for debugging
-          console.log("🔹 Click detected:", text, "URL:", url);
-
-          // Check if it matches our targets
+          
+          // Filter for WhatsApp or Tel links
           if (url.includes('wa.me') || url.includes('tel:')) {
-             console.log("🚀 Pushing generic_click to DataLayer");
+             console.log("🚀 Click Action:", text);
              window.dataLayer.push({
                 'event': 'generic_click',
                 'element_url': url,
@@ -78,18 +72,35 @@
         }
       });
 
-      // 3. Tally Form Listener
+      // 3. ROBUST Tally Listener (The Fix)
       window.addEventListener('message', function(e) {
-        // Check for Tally submission signals
-        // Tally sends different signals depending on setup, we check both common types
-        var isTally = (e.data === 'Tally.FormSubmitted') || 
-                      (e.data && e.data.type === 'tally-form-submitted');
+        // A. Debug: Log EVERYTHING coming from iframes to see what Tally sends
+        if (e.data && (typeof e.data === 'string' || e.data.event)) {
+           // Only log relevant messages to avoid noise
+           if (JSON.stringify(e.data).includes('Tally')) {
+               console.log("📩 Tally Signal Detected:", e.data);
+           }
+        }
 
-        if (isTally) {
-          console.log("🏆 Tally Form Submitted! Pushing to DataLayer...");
+        // B. Check for Submission (Supports both String and Object formats)
+        var isTallySubmit = false;
+
+        // Case 1: New Tally Format (Object)
+        if (e.data && e.data.event === 'Tally.FormSubmitted') {
+            isTallySubmit = true;
+        }
+        // Case 2: Old Tally Format (String)
+        else if (typeof e.data === 'string' && e.data.includes('Tally.FormSubmitted')) {
+            isTallySubmit = true;
+        }
+
+        // C. Fire GTM Event
+        if (isTallySubmit) {
+          console.log("🏆 Tally Goal Reached! Pushing 'form_submit' to GTM...");
           window.dataLayer.push({
             'event': 'form_submit',
-            'form_provider': 'tally'
+            'form_provider': 'tally',
+            'source': 'landing_page'
           });
         }
       });
